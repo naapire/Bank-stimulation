@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Deposit</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 100px; }
+    input, button { padding: 10px; margin: 10px; }
+  </style>
+</head>
+<body>
+  <h2>Deposit Money</h2>
+  <input type="number" id="amount" placeholder="Enter amount">
+  <button onclick="depositMoney()">Deposit</button>
+
+  <script>
+    function depositMoney() {
+      let user = JSON.parse(localStorage.getItem('user'));
+      const amount = parseFloat(document.getElementById('amount').value);
+      user.balance += amount;
+      localStorage.setItem('user', JSON.stringify(user));
+      window.location.href = './dashboard.html';
+    }
+  </script>
+</body>
+</html>

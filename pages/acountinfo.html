@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Account Type - Super Bank</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      margin-top: 80px;
+    }
+    select, button {
+      margin: 10px;
+      padding: 10px;
+      width: 250px;
+    }
+    .info {
+      margin-top: 30px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Account Information</h2>
+
+  
+
+  <div class="info" id="userInfo">
+    <!-- User info will be displayed here -->
+  </div>
+
+  <script>
+    // Load the user info from localStorage
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    // Display the user info
+    if (user) {
+      document.getElementById('userInfo').innerHTML = `
+        <p><strong>Username:</strong> ${user.username}</p>
+        <p><strong>Account Number:</strong> ${user.accountNumber}</p>
+        <p><strong>Password:</strong> ${user.password}</p>
+      `;
+    }
+
+    function selectAccountType() {
+      const accountType = document.getElementById('accountType').value;
+      if (user) {
+        user.accountType = accountType;
+        localStorage.setItem('user', JSON.stringify(user));
+        window.location.href = './dashboard.html';
+      }
+    }
+  </script>
+</body>
+</html>

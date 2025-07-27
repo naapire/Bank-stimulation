@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select Account Type</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 100px; }
+    select, button { padding: 10px; width: 250px; }
+  </style>
+</head>
+<body>
+  <h2>Select Account Type</h2>
+  <select id="accountType">
+    <option value="bank">Bank Account</option>
+    <option value="savings">Savings Account</option>
+    <option value="current">Current Account</option>
+    <option value="student">Student Account</option>
+  </select><br><br>
+  <button onclick="saveAccountType()">Continue</button>
+
+  <script>
+    function saveAccountType() {
+      const type = document.getElementById('accountType').value;
+      const user = JSON.parse(localStorage.getItem('user'));
+      user.accountType = type;
+      localStorage.setItem('user', JSON.stringify(user));
+      window.location.href = './dashboard.html';
+    }
+  </script>
+</body>
+</html>

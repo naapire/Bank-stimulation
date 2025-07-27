@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Withdraw</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 100px; }
+    input, button { padding: 10px; margin: 10px; }
+  </style>
+</head>
+<body>
+  <h2>Withdraw Money</h2>
+  <input type="number" id="amount" placeholder="Enter amount">
+  <button onclick="withdrawMoney()">Withdraw</button>
+
+  <script>
+    function withdrawMoney() {
+      let user = JSON.parse(localStorage.getItem('user'));
+      const amount = parseFloat(document.getElementById('amount').value);
+      if (amount > user.balance) {
+        alert('Insufficient funds!');
+        return;
+      }
+      user.balance -= amount;
+      localStorage.setItem('user', JSON.stringify(user));
+      window.location.href = './dashboard.html';
+    }
+  </script>
+</body>
+</html>

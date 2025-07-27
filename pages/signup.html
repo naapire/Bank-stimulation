@@ -1,0 +1,39 @@
+<!-- FILE: signup.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up - Super Bank</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 100px; }
+    input, button { margin: 10px; padding: 10px; width: 250px; }
+  </style>
+</head>
+<body>
+  <h2>Create an Account</h2>
+  <input type="text" id="username" placeholder="Username" required><br>
+  <input type="text" id="accountNumber" placeholder="Account Number" required><br>
+  <input type="password" id="password" placeholder="Password" required><br>
+  <button onclick="signUp()">Sign Up</button>
+
+  <script>
+    class User {
+      constructor(username, accountNumber, password) {
+        this.username = username;
+        this.accountNumber = accountNumber;
+        this.password = password;
+        this.balance = 0.00;
+      }
+    }
+
+    function signUp() {
+      const username = document.getElementById('username').value;
+      const accountNumber = document.getElementById('accountNumber').value;
+      const password = document.getElementById('password').value;
+      const user = new User(username, accountNumber, password);
+      localStorage.setItem('user', JSON.stringify(user));
+      window.location.href = './account.html';
+    }
+  </script>
+</body>
+</html>

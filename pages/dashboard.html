@@ -1,0 +1,23 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <style>
+    body { text-align: center; font-family: Arial; margin-top: 50px; }
+    button { margin: 10px; padding: 10px 20px; }
+  </style>
+</head>
+<body>
+  <h2>Your Current Balance</h2>
+  <h1 id="balance">$0.00</h1>
+  <button onclick="window.location.href='./deposit.html'">Deposit</button>
+  <button onclick="window.location.href='./redraw.html'">Withdraw</button>
+  <button onclick="window.location.href='./acountinfo.html'">Account Info</button>
+  <button onclick="window.location.href='./viewall.html'">View All Accounts</button>
+
+  <script>
+    const user = JSON.parse(localStorage.getItem('user'));
+    document.getElementById('balance').innerText = `$${user.balance.toFixed(2)}`;
+  </script>
+</body>
+</html>
